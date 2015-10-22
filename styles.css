@@ -36,4 +36,5 @@ fs-card {
     padding: 0;
     width: 170px;
   }
+  @apply(--grid-item-card-styles);
 }
