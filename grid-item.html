@@ -1,0 +1,87 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../fs-card/fs-card.html">
+<link rel="import" href="audio-artifact/audio-artifact.html">
+<link rel="import" href="image-artifact/image-artifact.html">
+<link rel="import" href="story-artifact/story-artifact.html">
+
+<!-- @demo demo/index.html -->
+
+<dom-module id='grid-item'>
+  <link rel="import" type="css" href="styles.css">
+  <template>
+    <fs-card>
+      <div class="artifact">
+        <!-- IMAGE/DOCUMENT RENDERER -->
+        <template is='dom-if' if="{{_isDefault(data.category)}}">
+          <image-artifact image-url='[[data.thumbUrl]]'></image-artifact>
+        </template>
+
+        <!-- AUDIO RENDERER -->
+        <template is='dom-if' if="{{_is(data.category, 'AUDIO')}}">
+          <audio-artifact audio-url='[[data.url]]' title='[[data.title]]'></audio-artifact>
+        </template>
+
+        <!-- STORY RENDERER -->
+        <template is='dom-if' if="{{_is(data.category, 'STORY')}}">
+          <story-artifact image-url='[[data.thumbUrl]]' description='[[data.description]]' title='[[data.title]]'></story-artifact>
+        </template>
+      </div>
+
+      <div class="title">
+        <span>[[data.title]]</span>
+      </div>
+    </fs-card>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'grid-item',
+    properties: {
+      /**
+       * Data to render as a gallery grid item. Can be one
+       * of two possible objects:
+       * ```javascript
+       * {
+       *   promise: {Promise Object},
+       *   file: {File Object}
+       * }
+       * ```
+       *
+       * Or a standard memories-ami object
+       *
+       * ```javascript
+       * {
+       *   "href": "./images/19687650", 
+       *   "category": "IMAGE", 
+       *   "url": "https://familysearch.org/patron/v2/TH-904-58554-804-13/dist.jpg?ctx=ArtCtxPublic", 
+       *   "thumbUrl": "https://familysearch.org/patron/v2/TH-904-58554-804-13/thumb200.jpg?ctx=ArtCtxPublic", 
+       *   "title": "Demo Title", 
+       *   "description": "", 
+       *   "id": 19687650, 
+       *   "uploadDatetime": 1444242182000, 
+       *   "datesPlaces": null, 
+       *   "deepZoomLiteUrl": "https://familysearch.org/dzpatron/v1/TH-904-58554-804-13/scale?width=800&ctx=ArtCtxPublic", 
+       *   "screeningState": "APPROVED", 
+       *   "originalFilename": "Josh (BYU Football).jpg", 
+       *   "photoTagCount": 0, 
+       * }
+       * ```
+       *
+       * **NOTE: If you utilize a promise and file all of the other properties will be ignored**
+       * @type {Object}
+       */
+      data: {
+        type: Object,
+        value: function() { return {}; }
+      }
+    },
+    _isDefault: function(category) {
+      return category === 'IMAGE' || category === 'DOCUMENT'
+    },
+    _is: function(a, b) {
+      return a == b;
+    }
+  });
+})();
+</script>
