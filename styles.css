@@ -12,6 +12,7 @@
   height: 27px;
   line-height: 1.1;
   position:relative;
+  @apply(--grid-item-title);
 }
 
 .title:after {
