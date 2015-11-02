@@ -35,6 +35,6 @@ fs-card {
   --fs-card-body: {
     padding: 0;
     width: 170px;
-  }
-  @apply(--grid-item-card-styles);
+    @apply(--grid-item-card-styles);
+  };
 }
