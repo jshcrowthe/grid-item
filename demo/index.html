@@ -3,6 +3,11 @@
 <head>
   <title>&lt;grid-item&gt; Component</title>
   <script src='../../webcomponentsjs/webcomponents.min.js'></script>
+  <script>
+  if ('createShadowRoot' in HTMLElement.prototype) {
+    window.Polymer = window.Polymer || { dom: 'shadow' };
+  }
+  </script>
   <link rel="import" href="../grid-item.html" async>
 </head>
 <body>
