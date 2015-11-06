@@ -7,7 +7,7 @@
 <!-- @demo demo/index.html -->
 
 <dom-module id='grid-item'>
-  <link rel="import" type="css" href="styles.css">
+  <link rel="import" type="css" href="grid-item.css">
   <template>
     <fs-card>
       <div class="artifact">
@@ -25,10 +25,14 @@
         <template is='dom-if' if="{{_is(data.category, 'STORY')}}">
           <story-artifact image-url='[[data.thumbUrl]]' description='[[data.description]]' title='[[data.title]]'></story-artifact>
         </template>
+
+        <i class='not-tagged-icon' hidden='[[!_is(data.photoTagCount, 0)]]'></i>
+
       </div>
 
       <div class="title">
-        <span>[[data.title]]</span>
+        <span hidden='[[!data.title]]'>[[data.title]]</span>
+        <a href$='[[data.href]]?focus=title' hidden='[[data.title]]'><i class='add-icon'></i>Add Title</a>
       </div>
     </fs-card>
   </template>
