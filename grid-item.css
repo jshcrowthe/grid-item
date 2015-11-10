@@ -20,15 +20,24 @@
 }
 
 .artifact {
-  height: 170px;
+  height:0;
+  overflow:hidden;
+  padding-top:100%;
   position: relative;
-  width: 170px;
+  width: 100%;
+}
+
+.artifact > * {
+  position: absolute;
+  top:0;
 }
 
 fs-card {
+  width: 46vw;
+  max-width: 170px;
   --fs-card-body: {
     padding: 0;
-    width: 170px;
+    width: 100%;
     @apply(--grid-item-card-styles);
   };
 }
@@ -55,4 +64,5 @@ fs-card {
   left:5px;
   position: absolute;
   width:35px;
+  top: initial;
 }
