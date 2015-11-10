@@ -28,7 +28,9 @@
   width: 100%;
 }
 
-.artifact > * {
+.artifact > image-artifact,
+.artifact > audio-artifact,
+.artifact > story-artifact {
   position: absolute;
   top:0;
 }
