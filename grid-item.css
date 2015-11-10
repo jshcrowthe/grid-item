@@ -1,5 +1,6 @@
 :host {
   display: inline-block;
+  --grid-item-card-width: 46vw;
 }
 
 .title {
@@ -33,7 +34,7 @@
 }
 
 fs-card {
-  width: 46vw;
+  width: var(--grid-item-card-width);
   max-width: 170px;
   --fs-card-body: {
     padding: 0;
