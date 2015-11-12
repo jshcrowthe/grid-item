@@ -21,9 +21,10 @@
     "/demo"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.2.0",
     "fs-card": "jshcrowthe/fs-card",
-    "layout": "Polymer/layout"
+    "layout": "Polymer/layout",
+    "lazy-img": "chadeddington/lazy-img",
+    "polymer": "Polymer/polymer#~1.2.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.6",
