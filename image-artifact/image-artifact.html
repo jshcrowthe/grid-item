@@ -1,4 +1,5 @@
 <link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../lazy-img/lazy-img.html">
 
 <dom-module id='image-artifact'>
   <style>
@@ -21,7 +22,7 @@
     }
   </style>
   <template>
-    <img class="thumbnail" src$="[[imageUrl]]" />
+    <img is="lazy-img" class="thumbnail" src$="[[imageUrl]]" />
   </template>
 </dom-module>
 <script>
