@@ -12,9 +12,9 @@
         <!-- ELAPSED TIME -->
         <span class="layout horizontal center center-justified audio-timer" hidden$="{{!_audioObj.initialized}}">{{_audioObj.elapsed}}</span>
         <!-- PLAY BUTTON -->
-        <span id="actionplay" class="audio-control layout horizontal" on-click="toggleAudio">
-          <i class="audio-icon play-icon"  hidden$="{{_audioObj.playing}}"></i>
-          <i class="audio-icon pause-icon" hidden$="{{!_audioObj.playing}}"></i>
+        <span id="actionplay" class="audio-control layout horizontal">
+          <i class="audio-icon play-icon"  hidden$="{{_audioObj.playing}}" on-tap="toggleAudio"></i>
+          <i class="audio-icon pause-icon" hidden$="{{!_audioObj.playing}}" on-tap="toggleAudio"></i>
         </span>
         <!-- AUDIO DURATION -->
         <span class="layout horizontal center center-justified audio-timer" hidden$="{{!_audioObj.initialized}}">{{_audioObj.duration}}</span>
@@ -100,7 +100,6 @@
       return staticClasses;
     },
     toggleAudio: function(e) {
-      // this._fireTrackingEventManual('Memories: Gallery: My Memories: Artifact Click to Play Audio');
       e.preventDefault();
       e.stopPropagation();
       if (!this._audioObj.initialized) this.set('_audioObj.initialized', true);

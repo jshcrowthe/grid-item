@@ -10,7 +10,7 @@
   <link rel="import" type="css" href="grid-item.css">
   <template>
     <fs-card>
-      <div class="artifact">
+      <div id='artifact' class="artifact">
         <!-- IMAGE/DOCUMENT RENDERER -->
         <template is='dom-if' if="{{_isDefault(data.category)}}">
           <image-artifact image-url='[[data.thumbUrl]]'></image-artifact>
@@ -80,11 +80,19 @@
         value: function() { return {}; }
       }
     },
+    listeners: {
+      'artifact.tap': '_goToItem'
+    },
     _isDefault: function(category) {
       return category === 'IMAGE' || category === 'DOCUMENT'
     },
     _is: function(a, b) {
       return a == b;
+    },
+    _goToItem: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      location = this.data.href;
     }
   });
 })();
